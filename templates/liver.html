@@ -1,0 +1,77 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+
+<main role="main">
+
+  <section class="jumbotron mt-2 p-0">
+
+    <div class="container mt-0 p-0">
+      <h1  style="text-align: center;">Liver Disease Prediction</h1>
+     <!--  <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p> -->
+
+ <form action="/predictliver" method="post">
+
+    <div class="form-group">
+      <input type="number" class="form-control" id="age"  name="age" placeholder="Enter Your Age">
+    </div>
+
+    <div class="form-group">
+      <input type="text" class="form-control" id="total_bilirubin" name="total_bilirubin" placeholder="Enter Total_Bilirubin">
+    </div>
+
+    <div class="form-group">
+      <input type="text" class="form-control" id="direct_bilirubin" name="direct_bilirubin" placeholder=" enter Direct_Bilirubin">
+    </div>
+
+    <div class="form-group">
+      <input type="number" class="form-control" id="alkaline_phosphotase"  name="alkaline_phosphotase" placeholder="Enter alkaline_phosphotase">
+    </div>
+
+    <div class="form-group">
+      <input type="number" class="form-control" id="alamine_aminotransferase" name="alamine_aminotransferase" placeholder="Enter Amount alamine_aminotransferase">
+    </div>
+
+    <div class="form-group">
+      <input type="number" class="form-control" id="aspartate_aminotransferase" name="aspartate_aminotransferase" placeholder="Enter Aspartate_Aminotransferase">
+    </div>
+
+    <div class="form-group">
+      <input type="text" class="form-control" id="total_protiens" name="total_protiens" placeholder="Total_Protiens">
+    </div>
+
+      <div class="form-group">
+      <input type="text" class="form-control" id="albumin" name="albumin" placeholder="albumin">
+    </div>
+
+    <div class="form-group">
+      <input type="text" class="form-control" id="agratio" name="agratio" placeholder="Albumin_and_Globulin_Ratio">
+    </div>
+
+  <input type="submit" class="btn btn-success" value="Predict">
+  </form>
+
+    </div>
+
+    		<div class="container-fluid w-50">
+			{% if prediction==1 %}
+				<h3>Prediction: <span class='danger'>Oops! You have Liver Cancer.</span></h3>
+
+			{% elif prediction==0 %}
+				<h3>Prediction: <span class='safe'>Great! You DON'T have Liver Cancer.</span></h3>
+
+			{% endif %}
+		</div>
+
+
+
+
+
+  </section>
+
+  </main>
+
+
+
+
+ {% endblock %}

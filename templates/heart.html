@@ -1,0 +1,91 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<main role="main">
+
+  <section class="jumbotron mt-2 p-0">
+
+    <div class="container mt-0 p-4">
+      <h1  style="text-align: center;">Heart Disease Prediction</h1>
+
+
+ <form action="/predictheart" method="post">
+
+    <div class="form-group">
+      <input type="number" class="form-control" id="age"  name="age" placeholder="Enter Your Age">
+    </div>
+
+    <div class="form-group">
+      <input type="number" class="form-control" id="sex" name="sex" placeholder="Sex 1:male 0:female">
+    </div>
+
+    <div class="form-group">
+      <input type="number" class="form-control" id="cpt" name="cpt" placeholder="chest pain type: 0,1,2,3">
+    </div>
+
+    <div class="form-group">
+      <input type="number" class="form-control" id="rbp"  name="rbp" placeholder="resting blood pressure range(94-200)">
+    </div>
+
+    <div class="form-group">
+      <input type="number" class="form-control" id="sc" name="sc" placeholder="serum cholestoral Range(126-564)">
+    </div>
+
+    <div class="form-group">
+      <input type="number" class="form-control" id="fbs" name="fbs" placeholder="fasting blood sugar 0:No 1:Yes">
+    </div>
+
+    <div class="form-group">
+      <input type="number" class="form-control" id="rer" name="rer" placeholder="resting electrocardiographic results (0,1,2)">
+    </div>
+
+     <div class="form-group">
+      <input type="number" class="form-control" id="mra" name="mra" placeholder="maximum heart rate achieved(71 - 202)">
+    </div>
+
+      <div class="form-group">
+      <input type="number" class="form-control" id="eia" name="eia" placeholder="exercise induced angina(0,1)">
+    </div>
+
+    <div class="form-group">
+      <input type="number" class="form-control" id="oldpeak" name="oldpeak" placeholder="oldpeak = ST depression induced by exercise relative to rest(0-6)">
+    </div>
+
+    <div class="form-group">
+      <input type="number" class="form-control" id="slope" name="slope" placeholder="the slope of the peak exercise ST segment(0-2)">
+    </div>
+
+    
+
+     <div class="form-group">
+      <input type="number" class="form-control" id="vessels" name="vessels" placeholder="number of major vessels (0-3) colored by flourosopy">
+    </div>
+
+     <div class="form-group">
+      <input type="number" class="form-control" id="thal" name="thal" placeholder="thal (0-3)">
+    </div>
+
+
+  <input type="submit" class="btn btn-success" value="Predict">
+  </form>
+
+    </div>
+
+    		<div class="container-fluid w-50">
+			{% if heart_prediction ==1 %}
+				<h3>Prediction: <span class='danger'>Oops! You have Heart Diease.</span></h3>
+
+			{% elif heart_prediction ==0 %}
+				<h3>Prediction: <span class='safe'>Great! You are healthy.</span></h3>
+
+			{% endif %}
+		</div>
+
+
+
+     </div>
+ </section>
+</main>
+
+
+ {% endblock %}

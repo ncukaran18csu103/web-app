@@ -1,0 +1,76 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<main role="main">
+
+  <section class="jumbotron mt-2 p-0">
+
+    <div class="container mt-0 p-4">
+      <h1  style="text-align: center;">Corona Prediction</h1>
+
+
+       <div class="container">
+          <form action="/coronapredict" method="POST">
+            <div class="form-group">
+              <label for="feaver">Feaver Value</label>
+              <input type="text" class="form-control" id="feaver" name="feaver" placeholder="Enter Feaver Value" required>
+            </div>
+            <div class="form-group">
+                <label for="feaver">Age Value</label>
+                <input type="text" class="form-control" id="age" name="age" placeholder="Enter Age Value" required>
+              </div>
+            <div class="form-group">
+              <label for="pain">Body Pain</label>
+              <select custom-select class="form-control custom-select" id="pain" name="pain">
+                <option value="1">No Pain</option>
+                <option value="0">severe pain</option>
+            </select>
+            </div>
+
+            <div class="form-group">
+                <label for="runnynose">Runny Nose</label>
+                <select custom-select class="form-control custom-select" id="runnynose" name="runnynose">
+                  <option value="1">YES</option>
+                  <option value="0">no</option>
+              </select>
+              </div>
+
+              <div class="form-group">
+                <label for="diffbreath">breathe Diffculty</label>
+                <select custom-select class="form-control custom-select" id="diffbreath" name="diffbreath">
+                  <option value="-1">No Diffeculty</option>
+                  <option value="0">little</option>
+                  <option value="1">server</option>
+              </select>
+              </div>
+
+           
+            <button class="btn btn-primary" type="submit">submit</button>
+          </form>
+      </div>
+
+
+
+     </div>
+
+       		<div class="container-fluid w-50">
+			{% if inf==1 %}
+				<h3>Prediction: <span class='danger'>Oops! You have Corona.</span></h3>
+
+			{% elif inf==0 %}
+				<h3>Prediction: <span class='safe'>Great! You DON'T have Corona.</span></h3>
+
+			{% endif %}
+		</div>
+
+         <!--   <div class="container">
+          <h3>YOur Probability of corona infection is {{inf}} %</h3>
+          <a href="/"><button class="btn btn-primary">Back</button></a>
+
+      </div> -->
+
+ </section>
+</main>
+
+
+ {% endblock %}

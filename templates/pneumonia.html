@@ -1,0 +1,95 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+
+<main role="main">
+
+  <section class="jumbotron mt-2 p-0">
+
+    <div class="container mt-0 p-0">
+      <h1  style="text-align: center;">Pneumonia Prediction</h1>
+     <!--  <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p> -->
+
+     <div class="container">
+  <div class="row">
+  
+    <div class="col-sm-6">
+       <form action="/predictpneumonia" method="post" enctype="multipart/form-data">
+
+             <div class="form-group">
+         <img id="blah" src="static/logo.png" alt="your image" style="width: 224px;height: 224px" /><br><br>
+             <input type="file" class="form-control-file" onchange="readURL(this);" name="image" id="exampleFormControlFile1" required>
+            
+            </div>
+            <input type="submit" class="btn btn-success" value="Predict">
+
+
+          </form>
+    </div><br>
+
+
+    <div class="col-sm-6" style="margin-bottom: 80px">
+        
+             {% if user_image %}
+          <div class="results">
+
+        <center> <div class="results container-fluid w-100">
+      <img src="{{ user_image }}" alt="User Image" class="img-fluid" style="width: 224px;height: 224px;text-align: center;"></center>   
+        <h3>Results : {{predict}}</h3> <hr>
+    </div>
+    {% else %}
+   <center> <img id="blah" src="static/logo.png" alt="your image" /></center>
+
+    {% endif %}
+
+
+
+          </div>
+
+        
+          
+    </div>
+  </div>
+
+
+
+ 
+    </div>
+
+        <div class="container-fluid w-50">
+      {% if prediction==1 %}
+        <h3>Prediction: <span class='danger'>Oops! You have DIABETES.</span></h3>
+
+      {% elif prediction==0 %}
+        <h3>Prediction: <span class='safe'>Great! You DON'T have diabetes.</span></h3>
+
+      {% endif %}
+    </div>
+
+
+
+    <script type="text/javascript">
+         function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+</script>
+
+
+
+  </section>
+
+  </main>
+
+
+
+
+ {% endblock %}
