@@ -1,2 +1,2 @@
 # Smart_Hospital
-Smart_Hospital
+web-app(Smart_Hospital)
